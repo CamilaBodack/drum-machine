@@ -43,38 +43,21 @@ h1 {
     margin: auto;
     border: 3px solid rgb(255, 255, 255);
     color: inherit;
-    display: block;
     text-align: center;
-    margin: auto;
     padding: 35px 35px 35px 35px;
     display: block;
     font-size: 45px;
 }
 
-#Q {
-}
-
-#W {
-}
-
-
-#E {
-}
-
-#A {
-}
-
-#S {
-}
-
-#D {
-}
-
-#Z {
-}
-
-#X {
-}
-
-#C {
+#sound-name{
+    width: 50%;
+    height: 6vh;
+    color: rgb(0, 0, 0);
+    background-color: rgb(233, 138, 10);
+    border: 2px solid rgb(0, 0, 0);
+    display: flex;
+    margin: auto auto auto auto;
+    padding-left: 5px;
+    align-items: center;
+    font-size: 35px;
 }

@@ -5,38 +5,84 @@ class Drum extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            value: ""
+        }
+
         this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.keyboardListener = this.keyboardListener.bind(this)
     }
 
-    handleKeyPress(event){
-        if(event.keyCode == 81){'pressed Q'}
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+
+    keyboardListener() {
+        document.addEventListener("keydown", this.handleKeyPress)
+    }
+
+    handleKeyPress(event) {
+        switch (event.keyCode) {
+            case 65:
+                console.log('pressed A')
+                break;
+            case 67:
+                console.log('pressed C')
+                break;
+            case 68:
+                console.log('pressed D')
+                break;
+            case 69:
+                console.log('pressed E')
+                break;
+            case 81:
+                console.log('pressed Q')
+                document.getElementByClass('drum-pad').innerHTML =
+                console.log(this.state.value)
+                break;
+            case 83:
+                console.log('pressed S')
+                break;
+            case 87:
+                console.log('pressed W')
+                break;
+            case 88:
+                console.log('pressed X')
+                break;
+            case 90:
+                console.log('pressed Z')
+                break;
+            default:
+                console.log('Key not Allowed')
+                break;
         }
+    }
 
     render() {
         return (<div>
             <h1>Welcome to Drum machine</h1>
             <DrummerImage/>
             <div id="drum-machine">
-                <button id="heater-1" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="heater-1" className="drum-pad" onClick={this.keyboardListener} onKeyDown={this.keyboardListener} onChange={this.handleChange}>
                     <audio className="clip" id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"></audio>Q</button>
-                <button id="heater-2" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="heater-2" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="W" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"></audio>W</button>
-                <button id="heater-3" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="heater-3" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="E" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"></audio>E</button>
-                <button id="light" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="light" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="A" src="https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3"></audio>A</button>
-                <button id="stick" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="stick" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="S" src="https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"></audio>S</button>
-                <button id="drum-plate-1" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="drum-plate-1" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="D" src="https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3"></audio>D</button>
-                <button id="drum-plate-2" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="drum-plate-2" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="Z" src="https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3"></audio>Z</button>
-                <button id="punchy-drum" className="drum-pad" onKeyPress={this.handleKeyPress}>
+                <button id="punchy-drum" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="X" src="https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3"></audio>X</button>
-                <button id="fast-kick" className="drum-pad"   onKeyPress={this.handleKeyPress}>
+                <button id="fast-kick" className="drum-pad" onKeyDown={this.keyboardListener}>
                     <audio className="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>C</button>
-                    </div>
-            <div id="display">Sound: {this.props.id}</div>
+            </div>
+            <div id="display">Sound: {this.state.value}</div>
 
         </div>)
     }

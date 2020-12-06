@@ -11,6 +11,7 @@ class Drum extends Component {
 
         this.handleKeyPress = this.handleKeyPress.bind(this)
         this.keyboardListener = this.keyboardListener.bind(this)
+        this.keyboardLetter = this. keyboardLetter.bind(this)
     }
 
     handleChange(event) {
@@ -21,36 +22,40 @@ class Drum extends Component {
         document.addEventListener("keydown", this.handleKeyPress)
     }
 
+    keyboardLetter(letter){
+        console.log('pressed ' + letter )
+        let audio = document.getElementById(letter);
+        audio.play();
+    }
+
     handleKeyPress(event) {
         switch (event.keyCode) {
             case 65:
-                console.log('pressed A')
+                this.keyboardLetter('A')
                 break;
             case 67:
-                console.log('pressed C')
+                this.keyboardLetter('C')
                 break;
             case 68:
-                console.log('pressed D')
+                this.keyboardLetter('D')
                 break;
             case 69:
-                console.log('pressed E')
+                this.keyboardLetter('E')
                 break;
             case 81:
-                console.log('pressed Q')
-                document.getElementByClass('drum-pad').innerHTML =
-                console.log(this.state.value)
+                this.keyboardLetter('Q')
                 break;
             case 83:
-                console.log('pressed S')
+                this.keyboardLetter('S')
                 break;
             case 87:
-                console.log('pressed W')
+                this.keyboardLetter('W')
                 break;
             case 88:
-                console.log('pressed X')
+                this.keyboardLetter('X')
                 break;
             case 90:
-                console.log('pressed Z')
+                this.keyboardLetter('Z')
                 break;
             default:
                 console.log('Key not Allowed')

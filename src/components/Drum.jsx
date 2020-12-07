@@ -5,18 +5,24 @@ class Drum extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            value: this.handleClick
-        }
-
         this.handleKeyPress = this.handleKeyPress.bind(this)
         this.keyboardLetter = this.keyboardLetter.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.changeKeyState = this.changeKeyState.bind(this)
+
+        this.state = {
+            keyName: ""
+        }
     }
 
     handleClick(event){
         let audioID = event.currentTarget.children[event.currentTarget.children.length -1];
         return this.keyboardLetter(audioID.id)
+    }
+
+    changeKeyState(event){
+        let KeyID = event.currentTarget.children[event.currentTarget.children.length -1];
+        this.setState({keyName: keyID.id});
     }
 
     keyboardLetter(letter) {
@@ -83,10 +89,10 @@ class Drum extends Component {
                     <audio className="clip" id="Z" src="https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3"></audio>Z</button>
                 <button id="punchy-drum" className="drum-pad" onClick={this.handleClick} onKeyDown={this.handleKeyPress}>
                     <audio className="clip" id="X" src="https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3"></audio>X</button>
-                <button id="fast-kick" className="drum-pad" value={this.state.value} onClick={this.handleClick} onKeyDown={this.handleKeyPress}>
+                <button id="fast-kick" className="drum-pad" onClick={this.handleClick} onKeyDown={this.handleKeyPress}>
                     <audio className="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>C</button>
             </div>
-            <div id="display">Sound: {this.state.value}</div>
+            <div id="display">onChange={this.changeKeyState}</div>
 
         </div>)
     }

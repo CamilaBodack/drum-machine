@@ -8,21 +8,13 @@ class Drum extends Component {
         this.handleKeyPress = this.handleKeyPress.bind(this)
         this.keyboardLetter = this.keyboardLetter.bind(this)
         this.handleClick = this.handleClick.bind(this)
-        this.changeKeyState = this.changeKeyState.bind(this)
-
-        this.state = {
-            keyName: ""
-        }
     }
 
     handleClick(event){
         let audioID = event.currentTarget.children[event.currentTarget.children.length -1];
-        return this.keyboardLetter(audioID.id)
-    }
+        console.log(event.target.getAttribute("id"))
 
-    changeKeyState(event){
-        let KeyID = event.currentTarget.children[event.currentTarget.children.length -1];
-        this.setState({keyName: keyID.id});
+        return this.keyboardLetter(audioID.id)
     }
 
     keyboardLetter(letter) {
@@ -92,7 +84,7 @@ class Drum extends Component {
                 <button id="fast-kick" className="drum-pad" onClick={this.handleClick} onKeyDown={this.handleKeyPress}>
                     <audio className="clip" id="C" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"></audio>C</button>
             </div>
-            <div id="display">onChange={this.changeKeyState}</div>
+            <div id="display">onClick = {document.getElementsByClassName('drum-pad')}</div>
 
         </div>)
     }

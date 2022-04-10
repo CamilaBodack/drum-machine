@@ -1,4 +1,4 @@
-# drum-machine
+# drum-machine 🥁
 
 A drum machine that can be played using the keyboard and / or mouse.
 
